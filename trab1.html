@@ -2,17 +2,15 @@
 <html>
 <head>
 	<meta charset="utf-8"/>
+	<link rel="stylesheet" href="trab1.css"/>
+	<link href="https://fonts.googleapis.com/css?family=Josefin+Slab" rel="stylesheet">
 	<script src="./js/jquery.min.js"></script>
 	<script>
 	$(function(){
 		$("#cep").blur(function(){
-
 		var cep = $("#cep").val();
-
-
 		var servico = "http://api.postmon.com.br/v1/cep/";
 		var $xhr = $.get(servico + cep);
-
 		$xhr.done(function(endereco){ //endereco é um obj
 			$("#logr").val(endereco.logradouro);
 			$("#num").val(endereco.complemento);
@@ -20,15 +18,12 @@
 			$("#cidade").val(endereco.cidade);
 			$("#est").val(endereco.estado);
 			console.log(endereco);
-
 			$("#resultado").text(endereco.logradouro +","+
 				endereco.complemento +","+ 
 				endereco.bairro +","+ 
 				endereco.cidade +","+ 
 				endereco.estado);
-
 		});
-
 		$xhr.fail(function(endereco){
 			console.log(endereco);
 			$("#resultado").text("Deu Errado!");
@@ -39,8 +34,9 @@
 	
 </head>
 <body>
+	<h1> Digite seu CEP para mais informações! </h1> <br/> <br/>
 	<form>
-		Nome <input type="text" name="nome"/> </br> 
+		Nome <input type="text" name="nome"/> </br> </br>
 		
 		<fieldset>
 			<legend> Endereço </legend>
@@ -49,7 +45,7 @@
 			Número <input type="text" id="num" name="num"/> </br> </br>
 			Bairro <input type="text" id="bairro" name="bairro"/> </br> </br>
 			Cidade <input type="text" id="cidade" name="cidade"/> </br> </br>
-			Estado <input type="text" id="est" name="est"/> </br> </br>
+			Estado <input type="text" id="est" name="est"/> </br> 
 		</fieldset> </br> 
 		<input type="button" value="Salvar" id="salvar" name="Salvar"/>
 	</form>
